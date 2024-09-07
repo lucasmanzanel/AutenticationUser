@@ -3,6 +3,7 @@ package com.lucas.curso.springboot.app.springboot_crud.entities;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lucas.curso.springboot.app.springboot_crud.validation.existsByUsername;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,9 +29,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @existsByUsername
     @NotBlank
     @Size(min = 4, max = 12)
+    @Column(unique = true)
     private String username;
 
     @NotBlank
